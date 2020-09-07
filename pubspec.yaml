@@ -1,0 +1,11 @@
+name: any_base
+description: Convert from any base (radix) to any base using any alphabet of digits.
+version: 1.0.0
+author: Krista Koivisto
+homepage:
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dev_dependencies:
+  test: ^1.15.3
