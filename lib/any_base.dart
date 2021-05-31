@@ -32,8 +32,8 @@ class AnyBase {
   static const String hex = '0123456789abcdef';
 
   const AnyBase(this.sourceAlphabet, this.destinationAlphabet)
-      : assert(sourceAlphabet != null && sourceAlphabet.length > 0),
-        assert(destinationAlphabet != null && destinationAlphabet.length > 0);
+      : assert(sourceAlphabet.length > 0),
+        assert(destinationAlphabet.length > 0);
 
   /// Convert `source` from the source alphabet to the destination alphabet.
   ///
@@ -60,7 +60,7 @@ class AnyBase {
 
     final sourceBase = sourceAlphabet.length;
     final destinationBase = destinationAlphabet.length;
-    final Map numberMap = {};
+    final Map<int, int> numberMap = {};
     int divide = 0;
     int newLength = 0;
     int length = source.length;
@@ -83,7 +83,7 @@ class AnyBase {
       divide = 0;
       newLength = 0;
       for (int i = 0; i < length; i++) {
-        divide = divide * sourceBase + numberMap[i];
+        divide = divide * sourceBase + (numberMap[i] as int);
         if (divide >= destinationBase) {
           numberMap[newLength++] = divide ~/ destinationBase;
           divide = divide % destinationBase;

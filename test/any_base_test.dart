@@ -14,17 +14,6 @@ void main() {
     expect(anyBase.convert('250a'), '9482');
     expect(anyBase.revert('9482'), '250a');
   });
-  test('throws on invalid parameters in constructor', () {
-    expect(() => AnyBase(null, AnyBase.dec), throwsTypeOf<AssertionError>());
-    expect(() => AnyBase(AnyBase.dec, null), throwsTypeOf<AssertionError>());
-    expect(() => AnyBase(null, null), throwsTypeOf<AssertionError>());
-  });
-  test('throws on invalid parameters to convert', () {
-    final anyBase = AnyBase(AnyBase.hex, AnyBase.dec);
-    expect(() => anyBase.convert(null), throwsTypeOf<AssertionError>());
-    // 'k' is not part of the hex alphabet
-    expect(() => anyBase.convert('k'), throwsTypeOf<FormatException>());
-  });
   test('custom alphabets map properly', () {
     final customHex = '0123456789nybase';
     final fromHex = AnyBase(AnyBase.hex, customHex);
